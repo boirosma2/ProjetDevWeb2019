@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Taches list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Datedebut</th>
+                <th>Datefinprevue</th>
+                <th>Datefinreelle</th>
+                <th>Avancement</th>
+                <th>Projet</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tache in taches %}
+            <tr>
+                <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.id }}</a></td>
+                <td>{{ tache.nom }}</td>
+                <td>{{ tache.description }}</td>
+                <td>{% if tache.dateDebut %}{{ tache.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.dateFinPrevue %}{{ tache.dateFinPrevue|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.dateFinReelle %}{{ tache.dateFinReelle|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ tache.avancement }}</td>
+                <td>{{ tache.projet }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tache_show', { 'id': tache.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tache_new') }}">Create a new tache</a>
+        </li>
+    </ul>
+{% endblock %}
