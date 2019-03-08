@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../FilmManager/.idea/FilmManager.iml" filepath="$PROJECT_DIR$/../FilmManager/.idea/FilmManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjetDevWeb2019.iml" filepath="$PROJECT_DIR$/.idea/ProjetDevWeb2019.iml" />
     </modules>
   </component>

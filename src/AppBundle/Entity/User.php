@@ -24,9 +24,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $name;
+    private $nom;
 
     /**
      * @var string
@@ -59,7 +59,7 @@ class User
     /**
      * @var \stdClass
      *
-     * @ORM\Column(name="projets", type="object")
+     * @ORM\OneToMany(targetEntity="Projet", mappedBy="user")
      */
     private $projets;
 

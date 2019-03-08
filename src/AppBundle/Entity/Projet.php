@@ -66,10 +66,17 @@ class Projet
     /**
      * @var \stdClass
      *
-     * @ORM\Column(name="taches", type="object")
+     * @ORM\OneToMany(targetEntity="Tache", mappedBy="projet")
      */
     private $taches;
 
+    /**
+     * @var \stdClass
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="projets", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
+     */
+    private $user;
 
     /**
      * Get id

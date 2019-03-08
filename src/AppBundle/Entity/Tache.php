@@ -65,8 +65,8 @@ class Tache
 
     /**
      * @var \stdClass
-     *
-     * @ORM\Column(name="projet", type="object")
+     * @ORM\ManyToOne(targetEntity="Projet", inversedBy="taches", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $projet;
 
