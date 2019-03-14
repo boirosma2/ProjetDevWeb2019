@@ -52,7 +52,7 @@ class User
     /**
      * @var \stdClass
      *
-     * @ORM\Column(name="Taches", type="object")
+     * @ORM\OneToMany(targetEntity="Tache", mappedBy="user")
      */
     private $taches;
 
@@ -81,9 +81,9 @@ class User
      *
      * @return User
      */
-    public function setName($name)
+    public function setNom($name)
     {
-        $this->name = $name;
+        $this->nom = $name;
 
         return $this;
     }
@@ -95,7 +95,7 @@ class User
      */
     public function getName()
     {
-        return $this->name;
+        return $this->nom;
     }
 
     /**
@@ -153,9 +153,9 @@ class User
      *
      * @return User
      */
-    public function setCompetences($competences)
+    public function addCompetences($competence)
     {
-        $this->competences = $competences;
+        $this->competences[] = $competence;
 
         return $this;
     }
@@ -170,52 +170,24 @@ class User
         return $this->competences;
     }
 
-    /**
-     * Set taches
-     *
-     * @param \stdClass $taches
-     *
-     * @return User
-     */
-    public function setTaches($taches)
-    {
-        $this->taches = $taches;
-
-        return $this;
-    }
-
-    /**
-     * Get taches
-     *
-     * @return \stdClass
-     */
     public function getTaches()
     {
         return $this->taches;
     }
 
-    /**
-     * Set projets
-     *
-     * @param \stdClass $projets
-     *
-     * @return User
-     */
-    public function setProjets($projets)
+    public function addTaches(Tache $tache)
     {
-        $this->projets = $projets;
-
-        return $this;
+        $this->taches[] = $tache;
     }
 
-    /**
-     * Get projets
-     *
-     * @return \stdClass
-     */
     public function getProjets()
     {
         return $this->projets;
+    }
+
+    public function addProjets(Projet $projet)
+    {
+        $this->projets[] = $projet;
     }
 }
 

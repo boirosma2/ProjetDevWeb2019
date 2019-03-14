@@ -36,27 +36,6 @@ class Tache
     private $description;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateDebut", type="date")
-     */
-    private $dateDebut;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateFinPrevue", type="date")
-     */
-    private $dateFinPrevue;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateFinReelle", type="date")
-     */
-    private $dateFinReelle;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="avancement", type="integer")
@@ -70,6 +49,12 @@ class Tache
      */
     private $projet;
 
+    /**
+     * @var \stdClass
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="taches", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
+     */
+    private $user;
 
     /**
      * Get id
@@ -130,78 +115,6 @@ class Tache
     }
 
     /**
-     * Set dateDebut
-     *
-     * @param \DateTime $dateDebut
-     *
-     * @return Tache
-     */
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDebut
-     *
-     * @return \DateTime
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * Set dateFinPrevue
-     *
-     * @param \DateTime $dateFinPrevue
-     *
-     * @return Tache
-     */
-    public function setDateFinPrevue($dateFinPrevue)
-    {
-        $this->dateFinPrevue = $dateFinPrevue;
-
-        return $this;
-    }
-
-    /**
-     * Get dateFinPrevue
-     *
-     * @return \DateTime
-     */
-    public function getDateFinPrevue()
-    {
-        return $this->dateFinPrevue;
-    }
-
-    /**
-     * Set dateFinReelle
-     *
-     * @param \DateTime $dateFinReelle
-     *
-     * @return Tache
-     */
-    public function setDateFinReelle($dateFinReelle)
-    {
-        $this->dateFinReelle = $dateFinReelle;
-
-        return $this;
-    }
-
-    /**
-     * Get dateFinReelle
-     *
-     * @return \DateTime
-     */
-    public function getDateFinReelle()
-    {
-        return $this->dateFinReelle;
-    }
-
-    /**
      * Set avancement
      *
      * @param integer $avancement
@@ -225,28 +138,22 @@ class Tache
         return $this->avancement;
     }
 
-    /**
-     * Set projet
-     *
-     * @param \stdClass $projet
-     *
-     * @return Tache
-     */
-    public function setProjet($projet)
-    {
-        $this->projet = $projet;
-
-        return $this;
-    }
-
-    /**
-     * Get projet
-     *
-     * @return \stdClass
-     */
     public function getProjet()
     {
         return $this->projet;
+    }
+
+    public function setProjet(Projet $projet)
+    {
+        $this->projet = $projet;
+    }
+
+    public function getUser(){
+        return $this->user;
+    }
+
+    public function setUser(User $user){
+        $this->user = $user;
     }
 }
 

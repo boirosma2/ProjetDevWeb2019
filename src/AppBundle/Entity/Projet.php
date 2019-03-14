@@ -36,20 +36,6 @@ class Projet
     private $description;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateLimite", type="date")
-     */
-    private $dateLimite;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateDebut", type="datetime")
-     */
-    private $dateDebut;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="client", type="string", length=255)
@@ -136,52 +122,24 @@ class Projet
         return $this->description;
     }
 
-    /**
-     * Set dateLimite
-     *
-     * @param \DateTime $dateLimite
-     *
-     * @return Projet
-     */
-    public function setDateLimite($dateLimite)
-    {
-        $this->dateLimite = $dateLimite;
 
-        return $this;
+
+    public function getTaches()
+    {
+        return $this->taches;
     }
 
-    /**
-     * Get dateLimite
-     *
-     * @return \DateTime
-     */
-    public function getDateLimite()
-    {
-        return $this->dateLimite;
+    public function addTaches(Tache $tache){
+        $this->taches[] = $tache;
     }
 
-    /**
-     * Set dateDebut
-     *
-     * @param \DateTime $dateDebut
-     *
-     * @return Projet
-     */
-    public function setDateDebut($dateDebut)
+    public function getUser()
     {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
+        return $this->user;
     }
 
-    /**
-     * Get dateDebut
-     *
-     * @return \DateTime
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
+    public function setUser(User $user){
+        $this->user = $user;
     }
 
     /**
@@ -232,28 +190,5 @@ class Projet
         return $this->budget;
     }
 
-    /**
-     * Set taches
-     *
-     * @param \stdClass $taches
-     *
-     * @return Projet
-     */
-    public function setTaches($taches)
-    {
-        $this->taches = $taches;
-
-        return $this;
-    }
-
-    /**
-     * Get taches
-     *
-     * @return \stdClass
-     */
-    public function getTaches()
-    {
-        return $this->taches;
-    }
 }
 
