@@ -50,6 +50,20 @@ class Projet
     private $budget;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDeb", type="datetime")
+     */
+    private $dateDeb;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="datetime")
+     */
+    private $dateFin;
+
+    /**
      * @var \stdClass
      *
      * @ORM\OneToMany(targetEntity="Tache", mappedBy="projet")
@@ -188,6 +202,54 @@ class Projet
     public function getBudget()
     {
         return $this->budget;
+    }
+
+    /**
+     * Set dateDeb
+     *
+     * @param \DateTime $datedeb
+     *
+     * @return Projet
+     */
+    public function setDateDeb(\DateTime $datedeb)
+    {
+        $this->dateDeb = $datedeb;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDateDeb
+     *
+     * @return \DateTime
+     */
+    public function getDateDeb()
+    {
+        return $this->dateDeb;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     *
+     * @return Projet
+     */
+    public function setDateFin(\DateTime $dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeb
+     *
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
     }
 
 }

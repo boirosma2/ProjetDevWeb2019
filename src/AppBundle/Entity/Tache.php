@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tache
@@ -41,6 +42,27 @@ class Tache
      * @ORM\Column(name="avancement", type="integer")
      */
     private $avancement;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDeb", type="datetime")
+     */
+    private $dateDeb;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFinPrevue", type="datetime")
+     */
+    private $dateFinPrevue;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFinReel", type="datetime")
+     */
+    private $dateFinReel;
 
     /**
      * @var \stdClass
@@ -138,6 +160,78 @@ class Tache
         return $this->avancement;
     }
 
+    /**
+     * Set dateDeb
+     *
+     * @param \DateTime $datedeb
+     *
+     * @return Tache
+     */
+    public function setDateDeb(\DateTime $datedeb)
+    {
+        $this->dateDeb = $datedeb;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeb
+     *
+     * @return \DateTime
+     */
+    public function getDateDeb()
+    {
+        return $this->dateDeb;
+    }
+
+    /**
+     * Set dateFinPrevue
+     *
+     * @param \DateTime $dateFinPrevue
+     *
+     * @return Tache
+     */
+    public function setDateFinPrevue(\DateTime $dateFinPrevue)
+    {
+        $this->dateFinPrevue = $dateFinPrevue;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFinPrevue
+     *
+     * @return \DateTime
+     */
+    public function getDateFinPrevue()
+    {
+        return $this->dateFinPrevue;
+    }
+
+    /**
+     * Set dateFinReel
+     *
+     * @param \DateTime $dateFinReel
+     *
+     * @return Tache
+     */
+    public function setDateFinReel(\DateTime $dateFinReel)
+    {
+        $this->dateFinReel = $dateFinReel;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFinReel
+     *
+     * @return \DateTime
+     */
+    public function getDateFinReel()
+    {
+        return $this->dateFinReel;
+    }
+
     public function getProjet()
     {
         return $this->projet;
@@ -154,6 +248,13 @@ class Tache
 
     public function setUser(User $user){
         $this->user = $user;
+    }
+
+    public function __construct()
+    {
+        $this->dateDeb = new \DateTime();
+        $this->dateFinPrevue = new \DateTime();
+        $this->dateFinReel = new \DateTime();
     }
 }
 

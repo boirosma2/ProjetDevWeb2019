@@ -48,6 +48,8 @@ MARKDOWN;
 
                 $projet->setClient('client ' . $j);
                 $projet->setBudget(12000);
+                $projet->setDateDeb(new \DateTime('now + '.$j.'seconds'));
+                $projet->setDateFin(new \DateTime('now + '.$j.'seconds'));
                 $projet->setUser($users[$i]);
                 $manager->persist($projet);
                 $manager->flush();
@@ -57,6 +59,9 @@ MARKDOWN;
                     $tache = new Tache();
                     $tache->setNom('Tache ' . $k);
                     $tache->setDescription($ch);
+                    $tache->setDateDeb(new \DateTime('now + '.$k.'seconds'));
+                    $tache->setDateFinPrevue(new \DateTime('now + '.$k.'seconds'));
+                    $tache->setDateFinReel(new \DateTime('now + '.$k.'seconds'));
                     $tache->setAvancement($k * mt_rand(10, 20));
                     $tache->setProjet($projets[$j]);
                     $tache->setUser($users[mt_rand(3, 9)]);
