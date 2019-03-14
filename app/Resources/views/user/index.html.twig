@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>{{ 'label.Id'|trans }}</th>
                 <th>Name</th>
                 <th>Prenom</th>
                 <th>Role</th>
@@ -23,9 +23,17 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.role }}</td>
-                <td>{{ user.competences }}</td>
-                <td>{{ user.taches }}</td>
-                <td>{{ user.projets }}</td>
+                <td>{{ user.competences[0] }}</td>
+                <td>
+                    {% for tache in user.taches %}
+                        {{ tache.nom }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for projet in user.projets %}
+                        {{ projet.nom }}<br>
+                    {% endfor %}
+                </td>
                 <td>
                     <ul>
                         <li>

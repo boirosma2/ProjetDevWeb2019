@@ -1,0 +1,522 @@
+[1mdiff --git a/.idea/workspace.xml b/.idea/workspace.xml[m
+[1mindex 254660b..013a54b 100644[m
+[1m--- a/.idea/workspace.xml[m
+[1m+++ b/.idea/workspace.xml[m
+[36m@@ -2,17 +2,9 @@[m
+ <project version="4">[m
+   <component name="ChangeListManager">[m
+     <list default="true" id="de4dffdb-f1ea-4abc-bb09-fb57ff5b25cf" name="Default Changelist" comment="">[m
+[31m-      <change afterPath="$PROJECT_DIR$/src/AppBundle/DataFixtures/AppFixtures.php" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/.idea/ProjetDevWeb2019.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetDevWeb2019.iml" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />[m
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/app/config/security.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/security.yml" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Projet.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Projet.php" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Tache.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Tache.php" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/user/index.html.twig" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/user/show.html.twig" afterDir="false" />[m
+     </list>[m
+     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />[m
+     <option name="SHOW_DIALOG" value="false" />[m
+[36m@@ -24,43 +16,144 @@[m
+     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>[m
+   </component>[m
+   <component name="FileEditorManager">[m
+[31m-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">[m
+[31m-      <file pinned="false" current-in-tab="false">[m
+[31m-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="204">[m
+[31m-              <caret line="12" selection-start-line="12" selection-end-line="12" />[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-      <file pinned="false" current-in-tab="false">[m
+[31m-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">[m
+[31m-          <provider selected="true" editor-type-id="text-editor" />[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-      <file pinned="false" current-in-tab="false">[m
+[31m-        <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/AppFixtures.php">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="187">[m
+[31m-              <caret line="11" selection-start-line="11" selection-end-line="11" />[m
+[31m-              <folding>[m
+[31m-                <element signature="e#42#68#0#PHP" expanded="true" />[m
+[31m-              </folding>[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-      <file pinned="false" current-in-tab="true">[m
+[31m-        <entry file="file://$PROJECT_DIR$/app/config/security.yml">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="119">[m
+[31m-              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-    </leaf>[m
+[32m+[m[32m    <splitter split-orientation="horizontal" split-proportion="0.5">[m
+[32m+[m[32m      <split-first>[m
+[32m+[m[32m        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">[m
+[32m+[m[32m          <file pinned="false" current-in-tab="true">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="204">[m
+[32m+[m[32m                  <caret line="12" selection-start-line="12" selection-end-line="12" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor" />[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/AppFixtures.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="17">[m
+[32m+[m[32m                  <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />[m
+[32m+[m[32m                  <folding>[m
+[32m+[m[32m                    <element signature="e#42#68#0#PHP" expanded="true" />[m
+[32m+[m[32m                  </folding>[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/Resources/views/user/index.html.twig">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="170">[m
+[32m+[m[32m                  <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/Resources/views/user/show.html.twig">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="340">[m
+[32m+[m[32m                  <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/Resources/views/user/new.html.twig">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="187">[m
+[32m+[m[32m                  <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor" />[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/Resources/views/user/edit.html.twig">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="340">[m
+[32m+[m[32m                  <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/config/security.yml">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="136">[m
+[32m+[m[32m                  <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m        </leaf>[m
+[32m+[m[32m      </split-first>[m
+[32m+[m[32m      <split-second>[m
+[32m+[m[32m        <leaf>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="85">[m
+[32m+[m[32m                  <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="731">[m
+[32m+[m[32m                  <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="true">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Tache.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="170">[m
+[32m+[m[32m                  <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="3" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/app/Resources/views/tache/index.html.twig">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="425">[m
+[32m+[m[32m                  <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="27" selection-end-column="103" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Projet.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="884">[m
+[32m+[m[32m                  <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TacheController.php">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="-289" />[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m        </leaf>[m
+[32m+[m[32m      </split-second>[m
+[32m+[m[32m    </splitter>[m
+   </component>[m
+   <component name="Git.Settings">[m
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />[m
+[36m@@ -72,11 +165,14 @@[m
+         <option value="$PROJECT_DIR$/web/app_dev.php" />[m
+         <option value="$PROJECT_DIR$/app/AppKernel.php" />[m
+         <option value="$PROJECT_DIR$/../FilmManager/src/AppBundle/Entity/Film.php" />[m
+[31m-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />[m
+[31m-        <option value="$PROJECT_DIR$/src/AppBundle/DataFixtures/AppFixtures.php" />[m
+         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Projet.php" />[m
+         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Tache.php" />[m
+         <option value="$PROJECT_DIR$/app/config/security.yml" />[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/src/AppBundle/DataFixtures/AppFixtures.php" />[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/app/Resources/views/user/show.html.twig" />[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/app/Resources/views/tache/index.html.twig" />[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/app/Resources/views/user/index.html.twig" />[m
+       </list>[m
+     </option>[m
+   </component>[m
+[36m@@ -125,7 +221,7 @@[m
+       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />[m
+     </include_path>[m
+   </component>[m
+[31m-  <component name="ProjectFrameBounds">[m
+[32m+[m[32m  <component name="ProjectFrameBounds" extendedState="6">[m
+     <option name="x" value="676" />[m
+     <option name="width" value="697" />[m
+     <option name="height" value="735" />[m
+[36m@@ -135,7 +231,6 @@[m
+       <foldersAlwaysOnTop value="true" />[m
+     </navigator>[m
+     <panes>[m
+[31m-      <pane id="Scope" />[m
+       <pane id="ProjectPane">[m
+         <subPane>[m
+           <expand>[m
+[36m@@ -154,10 +249,57 @@[m
+               <item name="app" type="462c0819:PsiDirectoryNode" />[m
+               <item name="config" type="462c0819:PsiDirectoryNode" />[m
+             </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="app" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="Resources" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="app" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="Resources" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="views" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="app" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="Resources" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="views" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="tache" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="src" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="src" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="src" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="Controller" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+[32m+[m[32m            <path>[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="b2602c69:ProjectViewProjectNode" />[m
+[32m+[m[32m              <item name="ProjetDevWeb2019" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="src" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m              <item name="Entity" type="462c0819:PsiDirectoryNode" />[m
+[32m+[m[32m            </path>[m
+           </expand>[m
+           <select />[m
+         </subPane>[m
+       </pane>[m
+[32m+[m[32m      <pane id="Scope" />[m
+     </panes>[m
+   </component>[m
+   <component name="PropertiesComponent">[m
+[36m@@ -194,18 +336,18 @@[m
+       <option name="presentableId" value="Default" />[m
+       <updated>1552061911433</updated>[m
+       <workItem from="1552061915014" duration="18763000" />[m
+[31m-      <workItem from="1552551070541" duration="335000" />[m
+[32m+[m[32m      <workItem from="1552551070541" duration="4390000" />[m
+     </task>[m
+     <servers />[m
+   </component>[m
+   <component name="TimeTrackingManager">[m
+[31m-    <option name="totallyTimeSpent" value="19098000" />[m
+[32m+[m[32m    <option name="totallyTimeSpent" value="23153000" />[m
+   </component>[m
+   <component name="ToolWindowManager">[m
+[31m-    <frame x="676" y="0" width="697" height="735" extended-state="0" />[m
+[32m+[m[32m    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />[m
+     <editor active="true" />[m
+     <layout>[m
+[31m-      <window_info content_ui="combo" id="Project" order="0" weight="0.26373628" />[m
+[32m+[m[32m      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18381241" />[m
+       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />[m
+       <window_info id="Favorites" order="2" side_tool="true" />[m
+       <window_info anchor="bottom" id="Message" order="0" />[m
+[36m@@ -218,7 +360,7 @@[m
+       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />[m
+       <window_info anchor="bottom" id="Database Changes" order="8" />[m
+       <window_info anchor="bottom" id="Version Control" order="9" />[m
+[31m-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.06312292" />[m
+[32m+[m[32m      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.062193125" />[m
+       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />[m
+       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />[m
+       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />[m
+[36m@@ -258,13 +400,6 @@[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">[m
+[31m-      <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="255">[m
+[31m-          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />[m
+[31m-        </state>[m
+[31m-      </provider>[m
+[31m-    </entry>[m
+     <entry file="file://$PROJECT_DIR$/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+         <state>[m
+[36m@@ -279,51 +414,111 @@[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Projet.php">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/../FilmManager/src/AppBundle/Entity/Role.php">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="306">[m
+[31m-          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />[m
+[32m+[m[32m        <state relative-caret-position="-272">[m
+[32m+[m[32m          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Tache.php">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/config/security.yml">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="153">[m
+[31m-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />[m
+[32m+[m[32m        <state relative-caret-position="136">[m
+[32m+[m[32m          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/../FilmManager/src/AppBundle/Entity/Role.php">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor" />[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor" />[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/new.html.twig">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="-272">[m
+[31m-          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />[m
+[32m+[m[32m        <state relative-caret-position="187">[m
+[32m+[m[32m          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor" />[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/edit.html.twig">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="340">[m
+[32m+[m[32m          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/show.html.twig">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="340">[m
+[32m+[m[32m          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TacheController.php">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="-289" />[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Projet.php">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="884">[m
+[32m+[m[32m          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/Resources/views/tache/index.html.twig">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="425">[m
+[32m+[m[32m          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="27" selection-end-column="103" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+     <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/AppFixtures.php">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="187">[m
+[31m-          <caret line="11" selection-start-line="11" selection-end-line="11" />[m
+[32m+[m[32m        <state relative-caret-position="17">[m
+[32m+[m[32m          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />[m
+           <folding>[m
+             <element signature="e#42#68#0#PHP" expanded="true" />[m
+           </folding>[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">[m
+[31m-      <provider selected="true" editor-type-id="text-editor" />[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="85">[m
+[32m+[m[32m          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="204">[m
+[31m-          <caret line="12" selection-start-line="12" selection-end-line="12" />[m
+[32m+[m[32m        <state relative-caret-position="731">[m
+[32m+[m[32m          <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Tache.php">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="119">[m
+[31m-          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />[m
+[32m+[m[32m        <state relative-caret-position="170">[m
+[32m+[m[32m          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="3" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/index.html.twig">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="170">[m
+[32m+[m[32m          <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="204">[m
+[32m+[m[32m          <caret line="12" selection-start-line="12" selection-end-line="12" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[1mdiff --git a/app/Resources/views/user/index.html.twig b/app/Resources/views/user/index.html.twig[m
+[1mindex 5fd801b..7ca221b 100644[m
+[1m--- a/app/Resources/views/user/index.html.twig[m
+[1m+++ b/app/Resources/views/user/index.html.twig[m
+[36m@@ -6,7 +6,7 @@[m
+     <table>[m
+         <thead>[m
+             <tr>[m
+[31m-                <th>Id</th>[m
+[32m+[m[32m                <th>{{ 'label.Id'|trans }}</th>[m
+                 <th>Name</th>[m
+                 <th>Prenom</th>[m
+                 <th>Role</th>[m
+[36m@@ -23,9 +23,17 @@[m
+                 <td>{{ user.name }}</td>[m
+                 <td>{{ user.prenom }}</td>[m
+                 <td>{{ user.role }}</td>[m
+[31m-                <td>{{ user.competences }}</td>[m
+[31m-                <td>{{ user.taches }}</td>[m
+[31m-                <td>{{ user.projets }}</td>[m
+[32m+[m[32m                <td>{{ user.competences[0] }}</td>[m
+[32m+[m[32m                <td>[m
+[32m+[m[32m                    {% for tache in user.taches %}[m
+[32m+[m[32m                        {{ tache.nom }}<br>[m
+[32m+[m[32m                    {% endfor %}[m
+[32m+[m[32m                </td>[m
+[32m+[m[32m                <td>[m
+[32m+[m[32m                    {% for projet in user.projets %}[m
+[32m+[m[32m                        {{ projet.nom }}<br>[m
+[32m+[m[32m                    {% endfor %}[m
+[32m+[m[32m                </td>[m
+                 <td>[m
+                     <ul>[m
+                         <li>[m
+[1mdiff --git a/app/Resources/views/user/show.html.twig b/app/Resources/views/user/show.html.twig[m
+[1mindex 230832c..f17e4eb 100644[m
+[1m--- a/app/Resources/views/user/show.html.twig[m
+[1m+++ b/app/Resources/views/user/show.html.twig[m
+[36m@@ -23,7 +23,7 @@[m
+             </tr>[m
+             <tr>[m
+                 <th>Competences</th>[m
+[31m-                <td>{{ user.competences }}</td>[m
+[32m+[m[32m                <td>{{ user.competences[0] }}</td>[m
+             </tr>[m
+             <tr>[m
+                 <th>Taches</th>[m
