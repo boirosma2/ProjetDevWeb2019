@@ -22,10 +22,16 @@ class AppFixtures extends Fixture
             $user->setNom('Name ' . $i);
             $user->setPrenom('Prenom ' . $i);
             if ($i < 3) {
-                $user->setRole('CHEF_PROJET');
+                $user->setFonction('CHEF_PROJET');
+                $user->setRoles(array('ROLE_CHEF'));
             } else {
-                $user->setRole('DEVELOPPEUR');
+                $user->setFonction('DEVELOPPEUR');
+                $user->setRoles(array('ROLE_DEV'));
             }
+            $user->setUsername($user->getName());
+            $user->setEmail('name'.$i.'@gmail.com');
+            $user->setPassword($user->getName());
+            $user->setSalt('');
             $user->addCompetences('Java');
             $manager->persist($user);
             $manager->flush();

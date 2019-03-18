@@ -3,15 +3,24 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        AppBundle\Entity\User: plaintext
 
     role_hierarchy:
-        ROLE_CHEF:  [ROLE_CHEF_PROJET, ROLE_DEVELOPPEUR]
-        ROLE_DEV :  ROLE_DEVELOPPEUR
+        ROLE_CHEF:  [ROLE_PROJET, ROLE_DEVELOPPEUR]
+        ROLE_DEV :  [ROLE_TACHE]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        #in_memory:
+         #   memory:
+          #      users:
+           #         developpeur: { password: developpeur, roles: [ 'ROLE_DEV' ]}
+            #        chef_projet: { password: chefdeprojet, roles: [ 'ROLE_CHEF' ]}
+        main:
+            entity:
+                class: AppBundle\Entity\User
+                property: username
+
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -20,7 +29,18 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern:    ^/
+            anonymous: true
+            provider: main
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   logout
+                target: /platform
+            guard:
+                authenticators:
+                    - AppBundle\Security\LoginFormAuthenticator
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -28,3 +48,7 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+

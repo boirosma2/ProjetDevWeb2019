@@ -9,7 +9,7 @@
                 <th>{{ 'label.Id'|trans }}</th>
                 <th>Name</th>
                 <th>Prenom</th>
-                <th>Role</th>
+                <th>Fonction</th>
                 <th>Competences</th>
                 <th>Taches</th>
                 <th>Projets</th>
@@ -22,7 +22,7 @@
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.prenom }}</td>
-                <td>{{ user.role }}</td>
+                <td>{{ user.fonction }}</td>
                 <td>{{ user.competences[0] }}</td>
                 <td>
                     {% for tache in user.taches %}
@@ -39,9 +39,11 @@
                         <li>
                             <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
                         </li>
+                        {% if is_granted('ROLE_CHEF') %}
                         <li>
                             <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
