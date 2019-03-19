@@ -29,8 +29,9 @@ class AppFixtures extends Fixture
                 $user->setRoles(array('ROLE_DEV'));
             }
             $user->setUsername($user->getName());
+            $user->setEnabled(1);
             $user->setEmail('name'.$i.'@gmail.com');
-            $user->setPassword($user->getName());
+            $user->setPlainPassword('password');
             $user->setSalt('');
             $user->addCompetences('Java');
             $manager->persist($user);
