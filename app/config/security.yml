@@ -7,10 +7,9 @@ security:
 
 
     role_hierarchy:
-        ROLE_CHEF:  [ROLE_PROJET, ROLE_DEVELOPPEUR]
+        ROLE_CHEF:  [ROLE_PROJET, ROLE_DEV]
         ROLE_DEV :  [ROLE_TACHE]
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN:  [ROLE_CHEF, ROLE_DEV]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:

@@ -10,8 +10,8 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ user.name }}</td>
+                <th>Nom</th>
+                <td>{{ user.nom }}</td>
             </tr>
             <tr>
                 <th>Prenom</th>
@@ -19,7 +19,16 @@
             </tr>
             <tr>
                 <th>Fonction</th>
-                <td>{{ user.fonction }}</td>
+                <td>
+                    {% for role in user.roles %}
+                        {% if role == 'ROLE_DEV' %}
+                            Developpeur <br>
+                        {% endif %}
+                        {% if role == 'ROLE_CHEF' %}
+                            Chef de projet <br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Competences</th>
@@ -27,11 +36,19 @@
             </tr>
             <tr>
                 <th>Taches</th>
-                <td>{{ user.taches }}</td>
+                <td>
+                    {% for tache in user.taches %}
+                        {{ tache.nom }}<br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Projets</th>
-                <td>{{ user.projets }}</td>
+                <td>
+                    {% for projet in user.projets %}
+                        {{ projet.nom }}<br>
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
@@ -43,6 +60,11 @@
         <li>
             <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
         </li>
+        <ul>
+            <li>
+                <a href="{{ path('projet_new', { 'id': user.id }) }}">Create a new projet</a>
+            </li>
+        </ul>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">

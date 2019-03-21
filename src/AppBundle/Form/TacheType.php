@@ -13,7 +13,14 @@ class TacheType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description')->add('dateDebut')->add('dateFinPrevue')->add('dateFinReelle')->add('avancement')->add('projet');
+        $builder
+            ->add('nom')
+            ->add('description')
+            ->add('dateDebut')
+            ->add('dateFinPrevue')
+            ->add('dateFinReelle')
+            ->add('avancement')
+            ->add('projet');
     }/**
      * {@inheritdoc}
      */

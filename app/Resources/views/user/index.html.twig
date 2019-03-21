@@ -20,10 +20,23 @@
         {% for user in users %}
             <tr>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.name }}</td>
+                <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
-                <td>{{ user.fonction }}</td>
-                <td>{{ user.competences[0] }}</td>
+                <td>
+                {% for role in user.roles %}
+                   {% if role == 'ROLE_DEV' %}
+                        Developpeur <br>
+                   {% endif %}
+                    {% if role == 'ROLE_CHEF' %}
+                        Chef de projet <br>
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>
+                    {% for competence in user.competences %}
+                        {{ competence }}<br>
+                    {% endfor %}
+                </td>
                 <td>
                     {% for tache in user.taches %}
                         {{ tache.nom }}<br>

@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <th>Datedebut</th>
-                <td>{% if tache.dateDebut %}{{ tache.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.dateDeb %}{{ tache.dateDeb|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Datefinprevue</th>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <th>Datefinreelle</th>
-                <td>{% if tache.dateFinReelle %}{{ tache.dateFinReelle|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.dateFinReel %}{{ tache.dateFinReel|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Avancement</th>
@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <th>Projet</th>
-                <td>{{ tache.projet }}</td>
+                <td>{{ tache.projet.nom }}</td>
             </tr>
         </tbody>
     </table>
@@ -46,6 +46,9 @@
         </li>
         <li>
             <a href="{{ path('tache_edit', { 'id': tache.id }) }}">Edit</a>
+        </li>
+        <li>
+            <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">Terminer la tache</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

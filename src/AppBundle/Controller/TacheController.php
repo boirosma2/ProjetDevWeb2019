@@ -2,10 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Projet;
 use AppBundle\Entity\Tache;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Tache controller.
@@ -34,13 +39,21 @@ class TacheController extends Controller
     /**
      * Creates a new tache entity.
      *
-     * @Route("/new", name="tache_new")
+     * @Route("/new/{id}", name="tache_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Projet $projet)
     {
         $tache = new Tache();
-        $form = $this->createForm('AppBundle\Form\TacheType', $tache);
+        $tache->setProjet($projet);
+        $form = $this->createFormBuilder($tache)
+            ->add('nom', TextType::class)
+            ->add('description', TextType::class)
+            ->add('avancement', IntegerType::class)
+            ->add('dateDeb', DateTimeType::class)
+            ->add('dateFinPrevue', DateTimeType::class)
+            ->add('dateFinReel', DateTimeType::class)
+            ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -70,6 +83,30 @@ class TacheController extends Controller
         return $this->render('tache/show.html.twig', array(
             'tache' => $tache,
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a tache entity.
+     *
+     * @Route("/{id}/ShowMyTaskes", name="tache_showAllFromProjet")
+     * @Method("GET")
+     */
+    public function showAllFromProjectAction(Projet $projet)
+    {
+        $em = $this->getDoctrine()
+            ->getRepository(Tache::class)
+            ->findBy(['projet' => $projet,]);
+
+        if(!$em){
+            throw $this->createNotFoundException(
+                'No Task found for project '.$projet->getNom()
+            );
+        }
+
+
+        return $this->render('tache/index.html.twig', array(
+            'taches' => $em,
         ));
     }
 
@@ -133,4 +170,22 @@ class TacheController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * End a tache entity.
+     *
+     * @Route("/{id}/terminer", name="tache_terminer")
+     * @Method({"GET", "POST"})
+     */
+    public function terminerAction(Request $request, Tache $tache)
+    {
+        /*$fin = (int)($tache->getDateFinPrevue()->format("d"));
+        $deb = (int)($tache->getDateDeb()->format("d"));
+        $datediff = $fin - $deb;*/
+        $tache->setAvancement(100);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('tache_index');
+    }
+
 }

@@ -12,6 +12,11 @@
         <li>
             <a href="{{ path('user_index') }}">Back to the list</a>
         </li>
+        <ul>
+            <li>
+                <a href="{{ path('projet_new', { 'id': user.id }) }}">Create a new projet</a>
+            </li>
+        </ul>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">

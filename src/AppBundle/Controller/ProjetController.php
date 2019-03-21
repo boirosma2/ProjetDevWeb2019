@@ -3,9 +3,15 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Projet;
+use AppBundle\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Projet controller.
@@ -34,14 +40,40 @@ class ProjetController extends Controller
     /**
      * Creates a new projet entity.
      *
-     * @Route("/new", name="projet_new")
+     * @Route("/new/{id}", name="projet_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, User $user)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux Chef de projet.');
+        }
+
         $projet = new Projet();
-        $form = $this->createForm('AppBundle\Form\ProjetType', $projet);
+        $projet->setUser($user);
+        /*$form = $this->createForm('AppBundle\Form\ProjetType', $projet);*/
+
+
+        $form = $this->createFormBuilder($projet)
+            ->add('nom', TextType::class)
+            ->add('description', TextType::class)
+            ->add('dateDeb', DateTimeType::class)
+            ->add('dateFin', DateTimeType::class)
+            ->add('client', TextType::class)
+            ->add('budget', IntegerType::class)
+             ->getForm();
+
         $form->handleRequest($request);
+        /*$builder
+            ->add('nom')
+            ->add('description')
+            ->add('dateLimite')
+            ->add('dateDebut')
+            ->add('client')
+            ->add('budget');*/
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -82,7 +114,15 @@ class ProjetController extends Controller
     public function editAction(Request $request, Projet $projet)
     {
         $deleteForm = $this->createDeleteForm($projet);
-        $editForm = $this->createForm('AppBundle\Form\ProjetType', $projet);
+        $editForm = $this->createFormBuilder($projet)
+            ->add('nom', TextType::class)
+            ->add('description', TextType::class)
+            ->add('dateDeb', DateTimeType::class)
+            ->add('dateFin', DateTimeType::class)
+            ->add('client', TextType::class)
+            ->add('budget', IntegerType::class)
+            ->getForm();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -127,6 +167,7 @@ class ProjetController extends Controller
      */
     private function createDeleteForm(Projet $projet)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('projet_delete', array('id' => $projet->getId())))
             ->setMethod('DELETE')

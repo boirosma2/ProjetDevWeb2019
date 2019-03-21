@@ -40,6 +40,12 @@ class Tache
      * @var int
      *
      * @ORM\Column(name="avancement", type="integer")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 100,
+     *      minMessage = "You must be at least 0",
+     *      maxMessage = "You must be at 100 if the project is finish"
+     * )
      */
     private $avancement;
 

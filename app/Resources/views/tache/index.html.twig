@@ -23,11 +23,11 @@
                 <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.id }}</a></td>
                 <td>{{ tache.nom }}</td>
                 <td>{{ tache.description }}</td>
-                <td>{% if tache.dateDebut %}{{ tache.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.dateDeb %}{{ tache.dateDeb|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if tache.dateFinPrevue %}{{ tache.dateFinPrevue|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if tache.dateFinReelle %}{{ tache.dateFinReelle|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.dateFinReel %}{{ tache.dateFinReel|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ tache.avancement }}</td>
-                <td>{{ tache.projet }}</td>
+                <td>{{ tache.projet.nom }}</td>
                 <td>
                     <ul>
                         <li>
@@ -43,9 +43,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('tache_new') }}">Create a new tache</a>
-        </li>
-    </ul>
 {% endblock %}

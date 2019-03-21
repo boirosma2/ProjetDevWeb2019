@@ -19,11 +19,11 @@
             </tr>
             <tr>
                 <th>Datelimite</th>
-                <td>{% if projet.dateLimite %}{{ projet.dateLimite|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if projet.dateFin %}{{ projet.dateFin|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Datedebut</th>
-                <td>{% if projet.dateDebut %}{{ projet.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if projet.dateDeb %}{{ projet.dateDeb|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Client</th>
@@ -35,7 +35,11 @@
             </tr>
             <tr>
                 <th>Taches</th>
-                <td>{{ projet.taches }}</td>
+                <td>
+                    {% for tache in projet.taches %}
+                        {{ tache.nom }}<br>
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
@@ -47,6 +51,15 @@
         <li>
             <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
         </li>
+        <li>
+            <a href="{{ path('tache_new', { 'id': projet.id }) }}">Ajouter une tache</a>
+        </li>
+        <li>
+            <a href="{{ path('tache_showAllFromProjet', { 'id': projet.id }) }}">Afficher Les taches affestées à ce projet</a>
+        </li>
+
+        tache_showAllFromProjet
+
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">

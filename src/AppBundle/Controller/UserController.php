@@ -24,6 +24,15 @@ class UserController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux Admin.');
+        }
+
+
+
         $em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository('AppBundle:User')->findAll();

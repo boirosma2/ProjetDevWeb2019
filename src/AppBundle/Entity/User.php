@@ -29,6 +29,14 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     protected $nom;
 
@@ -36,16 +44,17 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     protected $prenom;
 
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fonction", type="string", length=255)
-     */
-    protected $fonction;
 
 
     /**
@@ -89,7 +98,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getName()
+    public function getNom()
     {
         return $this->nom;
     }
@@ -118,29 +127,6 @@ class User extends BaseUser
         return $this->prenom;
     }
 
-    /**
-     * Set fonction
-     *
-     * @param string $fonction
-     *
-     * @return User
-     */
-    public function setFonction($fonction)
-    {
-        $this->fonction = $fonction;
-
-        return $this;
-    }
-
-    /**
-     * Get fonction
-     *
-     * @return string
-     */
-    public function getFonction()
-    {
-        return $this->fonction;
-    }
 
     /**
      * Set competences
@@ -186,5 +172,15 @@ class User extends BaseUser
         $this->projets[] = $projet;
     }
 
+   /* public function __construct()
+    {
+        parent::__construct();
+        if ($this->getFonction() == 'DEVELOPPEUR'){
+            $this->roles = array('ROLE_DEV');
+        }else if($this->getFonction() == 'CHEF_PROJET'){
+            $this->roles = array('ROLE_CHEF');
+        }
+
+    }*/
 }
 
