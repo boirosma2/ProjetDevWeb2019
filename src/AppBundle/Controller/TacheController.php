@@ -188,4 +188,26 @@ class TacheController extends Controller
         return $this->redirectToRoute('tache_index');
     }
 
+    /**
+     * Edit $avancement of a tache entity.
+     *
+     * @Route("/{id}/avancer", name="tache_avancer")
+     * @Method({"GET", "POST"})
+     */
+    public function AvancerAction(Request $request, Tache $tache)
+    {
+        $form = $this->createFormBuilder($tache)
+            ->add('avancement', IntegerType::class)
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('tache_Show', array('id' => $tache->getId()));
+        }
+
+
+        return $this->redirectToRoute('tache_index');
+    }
+
 }
