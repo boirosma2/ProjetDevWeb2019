@@ -57,13 +57,17 @@
         <li>
             <a href="{{ path('user_index') }}">Back to the list</a>
         </li>
+        {% if is_granted('ROLE_ADMIN') or app.user.id == user.id %}
         <li>
             <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
         </li>
+        {% endif %}
         <ul>
+            {% if is_granted('ROLE_CHEF') %}
             <li>
                 <a href="{{ path('projet_new', { 'id': user.id }) }}">Create a new projet</a>
             </li>
+            {% endif %}
         </ul>
         <li>
             {{ form_start(delete_form) }}

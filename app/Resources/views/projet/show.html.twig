@@ -48,22 +48,24 @@
         <li>
             <a href="{{ path('projet_index') }}">Back to the list</a>
         </li>
+        {% if ((is_granted('ROLE_CHEF') and app.user.id == projet.user.id) or is_granted('ROLE_ADMIN')) %}
         <li>
             <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
         </li>
+        {% endif %}
+        {% if ((is_granted('ROLE_CHEF')  or is_granted('ROLE_ADMIN')) %}
         <li>
             <a href="{{ path('tache_new', { 'id': projet.id }) }}">Ajouter une tache</a>
         </li>
+        {% endif %}
         <li>
             <a href="{{ path('tache_showAllFromProjet', { 'id': projet.id }) }}">Afficher Les taches affestées à ce projet</a>
-        </li>
 
-        tache_showAllFromProjet
-
-        <li>
+            {% if ((is_granted('ROLE_CHEF') and app.user.id == projet.user.id) or is_granted('ROLE_ADMIN')) %}
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
+            {% endif %}
         </li>
     </ul>
 {% endblock %}

@@ -44,16 +44,25 @@
         <li>
             <a href="{{ path('tache_index') }}">Back to the list</a>
         </li>
+        {% if (is_granted('ROLE_DEV') and (app.user.id == tache.user.id))
+            or app.user.id == tache.projet.user.id or is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{ path('tache_edit', { 'id': tache.id }) }}">Edit</a>
         </li>
+        {% endif %}
+        {% if (is_granted('ROLE_DEV') and (app.user.id == tache.user.id))
+            or app.user.id == tache.projet.user.id or is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">Terminer la tache</a>
         </li>
+        {% endif %}
+        {% if (is_granted('ROLE_DEV') and (app.user.id == tache.user.id))
+            or app.user.id == tache.projet.user.id or is_granted('ROLE_ADMIN') %}
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
+        {% endif %}
     </ul>
 {% endblock %}

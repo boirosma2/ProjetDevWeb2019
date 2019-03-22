@@ -6,8 +6,15 @@ use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 /**
  * User controller.
@@ -24,12 +31,12 @@ class UserController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        /*$user = $this->get('security.token_storage')->getToken()->getUser();
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             // Sinon on déclenche une exception « Accès interdit »
 
             throw new AccessDeniedException('Accès limité aux Admin.');
-        }
+        }*/
 
 
 
@@ -50,6 +57,12 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux Admin.');
+        }
         $user = new User();
         $form = $this->createForm('AppBundle\Form\UserType', $user);
         $form->handleRequest($request);
@@ -92,14 +105,37 @@ class UserController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux Admin.');
+        }
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $editForm = $this->createFormBuilder($user)
+            ->add('email', EmailType::class)
+            ->add('username', TextType::class)
+            ->add('plainpassword', PasswordType::class)
+            ->add('prenom', TextType::class)
+            ->add('nom', TextType::class)
+            ->add('prenom', TextType::class)
+            ->add('competences', ChoiceType::class, array(
+                'choices' => array(
+                    'Java' => 'Java',
+                    'PHP' => 'PHP'
+                ),
+                'expanded'=> true,
+                'multiple' => true,
+                'required' => true
+            ))
+            ->getForm();
+        $user->setSalt('');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         return $this->render('user/edit.html.twig', array(
@@ -117,6 +153,12 @@ class UserController extends Controller
      */
     public function deleteAction(Request $request, User $user)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux Admin.');
+        }
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 

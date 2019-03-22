@@ -30,12 +30,17 @@
                 <td>{{ tache.projet.nom }}</td>
                 <td>
                     <ul>
+                        {% if is_granted('ROLE_DEV')%}
                         <li>
                             <a href="{{ path('tache_show', { 'id': tache.id }) }}">show</a>
                         </li>
+                        {% endif %}
+                        {% if (is_granted('ROLE_DEV') and (app.user.id == tache.user.id))
+                            or app.user.id == tache.projet.user.id or is_granted('ROLE_ADMIN') %}
                         <li>
                             <a href="{{ path('tache_edit', { 'id': tache.id }) }}">edit</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>

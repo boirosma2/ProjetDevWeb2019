@@ -15,6 +15,16 @@ class RegistrationType extends AbstractType
         $builder->add('nom');
         $builder->add('prenom');
 
+        $builder->add('competences', ChoiceType::class, array(
+            'choices' => array(
+                'Java' => 'Java',
+                'PHP' => 'PHP'
+            ),
+            'expanded'=> true,
+            'multiple' => true,
+            'required' => true
+        ));
+
         //decommenter la partie suivante pour directement remplir la case $roles
         //puis commenter la partie suivante
         $builder->add('roles', ChoiceType::class, array(
@@ -26,6 +36,7 @@ class RegistrationType extends AbstractType
             'multiple' => true,
             'required' => true
         ));
+
         /*$builder
             ->add('fonction', ChoiceType::class, array(
                 'choices' => array(

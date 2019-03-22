@@ -2,9 +2,8 @@
 
 namespace AppBundle\DataFixtures;
 
-use AppBundle\Entity\Film;
+
 use AppBundle\Entity\Projet;
-use AppBundle\Entity\Role;
 use AppBundle\Entity\Tache;
 use AppBundle\Entity\user;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -16,19 +15,18 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $users = [];
+
         // create 3 films! Bam!
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user->setNom('Name ' . $i);
             $user->setPrenom('Prenom ' . $i);
             if ($i < 3) {
-                $user->setFonction('CHEF_PROJET');
                 $user->setRoles(array('ROLE_CHEF'));
             } else {
-                $user->setFonction('DEVELOPPEUR');
                 $user->setRoles(array('ROLE_DEV'));
             }
-            $user->setUsername($user->getName());
+            $user->setUsername($user->getNom());
             $user->setEnabled(1);
             $user->setEmail('name'.$i.'@gmail.com');
             $user->setPlainPassword('password');
@@ -38,6 +36,18 @@ class AppFixtures extends Fixture
             $manager->flush();
             $users[] = $user;
         }
+        $user = new User();
+        $user->setNom('admin');
+        $user->setPrenom('admin');
+        $user->setRoles(array('ROLE_ADMIN'));
+        $user->setUsername('admin');
+        $user->setEnabled(1);
+        $user->setEmail('admin@gmail.com');
+        $user->setPlainPassword('admin');
+        $user->addCompetences('Java');
+        $manager->persist($user);
+        $manager->flush();
+        $users[] = $user;
 
 
         for ($i = 0; $i < 3; $i++) {

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Tache controller.
@@ -27,6 +28,11 @@ class TacheController extends Controller
      */
     public function indexAction()
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_DEV')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux developpeurs.');
+        }
         $em = $this->getDoctrine()->getManager();
 
         $taches = $em->getRepository('AppBundle:Tache')->findAll();
@@ -44,6 +50,11 @@ class TacheController extends Controller
      */
     public function newAction(Request $request, Projet $projet)
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux chefs de projets.');
+        }
         $tache = new Tache();
         $tache->setProjet($projet);
         $form = $this->createFormBuilder($tache)
@@ -78,6 +89,11 @@ class TacheController extends Controller
      */
     public function showAction(Tache $tache)
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_DEV')) {
+        // Sinon on déclenche une exception « Accès interdit »
+
+        throw new AccessDeniedException('Accès limité aux developpeurs.');
+        }
         $deleteForm = $this->createDeleteForm($tache);
 
         return $this->render('tache/show.html.twig', array(
@@ -94,6 +110,11 @@ class TacheController extends Controller
      */
     public function showAllFromProjectAction(Projet $projet)
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_DEV')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux developpeurs.');
+        }
         $em = $this->getDoctrine()
             ->getRepository(Tache::class)
             ->findBy(['projet' => $projet,]);
@@ -118,6 +139,11 @@ class TacheController extends Controller
      */
     public function editAction(Request $request, Tache $tache)
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité aux developpeurs.');
+        }
         $deleteForm = $this->createDeleteForm($tache);
         $editForm = $this->createForm('AppBundle\Form\TacheType', $tache);
         $editForm->handleRequest($request);
@@ -125,7 +151,7 @@ class TacheController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('tache_edit', array('id' => $tache->getId()));
+            return $this->redirectToRoute('tache_show', array('id' => $tache->getId()));
         }
 
         return $this->render('tache/edit.html.twig', array(
@@ -143,6 +169,12 @@ class TacheController extends Controller
      */
     public function deleteAction(Request $request, Tache $tache)
     {
+        if (false === $this->get('security.authorization_checker')
+                ->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité au chef du projet.');
+        }
         $form = $this->createDeleteForm($tache);
         $form->handleRequest($request);
 
@@ -179,6 +211,13 @@ class TacheController extends Controller
      */
     public function terminerAction(Request $request, Tache $tache)
     {
+        if (false === $this->get('security.authorization_checker')
+                ->isGranted('ROLE_DEV')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité 
+            au developpeur .');
+        }
         /*$fin = (int)($tache->getDateFinPrevue()->format("d"));
         $deb = (int)($tache->getDateDeb()->format("d"));
         $datediff = $fin - $deb;*/
@@ -196,6 +235,13 @@ class TacheController extends Controller
      */
     public function AvancerAction(Request $request, Tache $tache)
     {
+        if (false === $this->get('security.authorization_checker')
+                ->isGranted('ROLE_DEV')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité 
+            au developpeur.');
+        }
         $form = $this->createFormBuilder($tache)
             ->add('avancement', IntegerType::class)
             ->getForm();
