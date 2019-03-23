@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Projets list</h1>
-
+    <h1>{{ 'label.ProjectList'|trans }}</h1>
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Datelimite</th>
-                <th>Datedebut</th>
-                <th>Client</th>
-                <th>Budget</th>
-                <th>Taches</th>
-                <th>Actions</th>
+                <th>{{ 'label.Id'|trans }}</th>
+                <th>{{ 'label.Name'|trans }}</th>
+                <th>{{ 'label.Description'|trans }}</th>
+                <th>{{ 'label.DateLine'|trans }}</th>
+                <th>{{ 'label.StartDate'|trans }}</th>
+                <th>{{ 'label.Client'|trans }}</th>
+                <th>{{ 'label.Budget'|trans }}</th>
+                <th>{{ 'label.Task'|trans }}</th>
+                <th>{{ 'label.Action'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -35,10 +34,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('projet_show', { 'id': projet.id }) }}">show</a>
+                            <a href="{{ path('projet_show', { 'id': projet.id }) }}">{{ 'label.Show'|trans }}</a>
                         </li>
                         <li>
-                            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">edit</a>
+                            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">{{ 'label.Edit'|trans }}</a>
                         </li>
                     </ul>
                 </td>

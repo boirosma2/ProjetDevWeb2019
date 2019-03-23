@@ -1,40 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Projet</h1>
+    <h1>{{ 'label.ShowProject'|trans }}</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'label.Id'|trans }}</th>
                 <td>{{ projet.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>{{ 'label.Name'|trans }}</th>
                 <td>{{ projet.nom }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>{{ 'label.Description'|trans }}</th>
                 <td>{{ projet.description }}</td>
             </tr>
             <tr>
-                <th>Datelimite</th>
+                <th>{{ 'label.DateLine'|trans }}</th>
                 <td>{% if projet.dateFin %}{{ projet.dateFin|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datedebut</th>
+                <th>{{ 'label.StartdDate'|trans }}</th>
                 <td>{% if projet.dateDeb %}{{ projet.dateDeb|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Client</th>
+                <th>{{ 'label.Client'|trans }}</th>
                 <td>{{ projet.client }}</td>
             </tr>
             <tr>
-                <th>Budget</th>
+                <th>{{ 'label.Budget'|trans }}</th>
                 <td>{{ projet.budget }}</td>
             </tr>
             <tr>
-                <th>Taches</th>
+                <th>{{ 'label.Task'|trans }}</th>
                 <td>
                     {% for tache in projet.taches %}
                         {{ tache.nom }}<br>
@@ -46,16 +46,16 @@
 
     <ul>
         <li>
-            <a href="{{ path('projet_index') }}">Back to the list</a>
+            <a href="{{ path('projet_index') }}">{{ 'label.BackToList'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
+            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">{{ 'label.Edit'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('tache_new', { 'id': projet.id }) }}">Ajouter une tache</a>
+            <a href="{{ path('tache_new', { 'id': projet.id }) }}">{{ 'label.AddTask'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('tache_showAllFromProjet', { 'id': projet.id }) }}">Afficher Les taches affestées à ce projet</a>
+            <a href="{{ path('tache_showAllFromProjet', { 'id': projet.id }) }}">{{ 'label.ShowTaskProject'|trans }}</a>
         </li>
 
         tache_showAllFromProjet
