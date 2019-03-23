@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tache edit</h1>
+    <h1>{{ 'label.TaskEdit'|trans }}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,10 +10,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('tache_index') }}">Back to the list</a>
+            <a href="{{ path('tache_index') }}">{{ 'label.BackToList'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">Terminer la tache</a>
+            <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">{{ 'label.EndTask'|trans }}</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

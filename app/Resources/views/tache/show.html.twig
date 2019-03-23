@@ -1,40 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tache</h1>
+    <h1>{{ 'label.ListTask'|trans }}</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'label.Id'|trans }}</th>
                 <td>{{ tache.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>{{ 'label.Name'|trans }}</th>
                 <td>{{ tache.nom }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>{{ 'label.Description'|trans }}</th>
                 <td>{{ tache.description }}</td>
             </tr>
             <tr>
-                <th>Datedebut</th>
+                <th>{{ 'label.StartDate'|trans }}</th>
                 <td>{% if tache.dateDeb %}{{ tache.dateDeb|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datefinprevue</th>
+                <th>{{ 'label.ExpectEndDate'|trans }}</th>
                 <td>{% if tache.dateFinPrevue %}{{ tache.dateFinPrevue|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datefinreelle</th>
+                <th>{{ 'label.EndDate'|trans }}</th>
                 <td>{% if tache.dateFinReel %}{{ tache.dateFinReel|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Avancement</th>
+                <th>{{ 'label.Advancement'|trans }}</th>
                 <td>{{ tache.avancement }}</td>
             </tr>
             <tr>
-                <th>Projet</th>
+                <th>{{ 'label.Project'|trans }}</th>
                 <td>{{ tache.projet.nom }}</td>
             </tr>
         </tbody>
@@ -42,13 +42,13 @@
 
     <ul>
         <li>
-            <a href="{{ path('tache_index') }}">Back to the list</a>
+            <a href="{{ path('tache_index') }}">{{ 'label.BackToList'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">Edit</a>
+            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">{{ 'label.Edit'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">Terminer la tache</a>
+            <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">{{ 'label.EndTask'|trans }}</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

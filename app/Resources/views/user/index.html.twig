@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Users list</h1>
+    <h1>{{ 'label.UserList'|trans }}</h1>
 
     <table>
         <thead>
             <tr>
                 <th>{{ 'label.Id'|trans }}</th>
-                <th>Name</th>
-                <th>Prenom</th>
-                <th>Fonction</th>
-                <th>Competences</th>
-                <th>Taches</th>
-                <th>Projets</th>
-                <th>Actions</th>
+                <th>{{ 'label.Name'|trans }}</th>
+                <th>{{ 'label.Surname'|trans }}</th>
+                <th>{{ 'label.Fonction'|trans }}</th>
+                <th>{{ 'label.Skill'|trans }}</th>
+                <th>{{ 'label.Task'|trans }}</th>
+                <th>{{ 'label.Project'|trans }}</th>
+                <th>{{ 'label.Action'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +25,10 @@
                 <td>
                 {% for role in user.roles %}
                    {% if role == 'ROLE_DEV' %}
-                        Developpeur <br>
+                       {{ 'label.Developer'|trans }} <br>
                    {% endif %}
                     {% if role == 'ROLE_CHEF' %}
-                        Chef de projet <br>
+                        {{ 'label.ProjectManager'|trans }} <br>
                     {% endif %}
                 {% endfor %}
                 </td>
@@ -50,11 +50,11 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">{{ 'label.show'|trans }}</a>
                         </li>
                         {% if is_granted('ROLE_CHEF') %}
                         <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'label.edit'|trans }}</a>
                         </li>
                         {% endif %}
                     </ul>
@@ -66,7 +66,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
+            <a href="{{ path('user_new') }}">{{ 'label.CreateUser'|trans }}</a>
         </li>
     </ul>
 {% endblock %}

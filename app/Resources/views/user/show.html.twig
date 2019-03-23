@@ -1,41 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1>{{ 'label.ListUser'|trans }}</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'label.Id'|trans }}</th>
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>{{ 'label.Name'|trans }}</th>
                 <td>{{ user.nom }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
+                <th>{{ 'label.Surname'|trans }}</th>
                 <td>{{ user.prenom }}</td>
             </tr>
             <tr>
-                <th>Fonction</th>
+                <th>{{ 'label.Fonction'|trans }}</th>
                 <td>
                     {% for role in user.roles %}
                         {% if role == 'ROLE_DEV' %}
-                            Developpeur <br>
+                            {{ 'label.Developer'|trans }} <br>
                         {% endif %}
                         {% if role == 'ROLE_CHEF' %}
-                            Chef de projet <br>
+                            {{  'label.ProjectManager'|trans }}  <br>
                         {% endif %}
                     {% endfor %}
                 </td>
             </tr>
             <tr>
-                <th>Competences</th>
+                <th>{{ 'label.Skill'|trans }}</th>
                 <td>{{ user.competences[0] }}</td>
             </tr>
             <tr>
-                <th>Taches</th>
+                <th>{{ 'label.Task'|trans }}</th>
                 <td>
                     {% for tache in user.taches %}
                         {{ tache.nom }}<br>
@@ -43,7 +43,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Projets</th>
+                <th>{{ 'label.Project'|trans }}</th>
                 <td>
                     {% for projet in user.projets %}
                         {{ projet.nom }}<br>
@@ -55,14 +55,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
+            <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
         </li>
         <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'label.Edit'|trans }}</a>
         </li>
         <ul>
             <li>
-                <a href="{{ path('projet_new', { 'id': user.id }) }}">Create a new projet</a>
+                <a href="{{ path('projet_new', { 'id': user.id }) }}">{{ 'label.CreateProject'|trans }}</a>
             </li>
         </ul>
         <li>

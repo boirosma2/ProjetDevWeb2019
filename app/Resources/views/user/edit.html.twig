@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User edit</h1>
+    <h1>{{ 'label.UserEdit'|trans }}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,11 +10,11 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
+            <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
         </li>
         <ul>
             <li>
-                <a href="{{ path('projet_new', { 'id': user.id }) }}">Create a new projet</a>
+                <a href="{{ path('projet_new', { 'id': user.id }) }}">{{ 'label.CreateProject'|trans }}</a>
             </li>
         </ul>
         <li>
