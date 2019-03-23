@@ -1,14 +1,10 @@
-{% extends 'base.html.twig' %}
+<head>
+    <meta charset="utf-8">
+    <title>Mini Projet</title>
 
-{% block body %}
-
-    <head>
-        <meta charset="utf-8">
-        <title>Mini Projet</title>
-
-        <!-- Fonts -->
-    </head>
-    <body>
+    <!-- Fonts -->
+</head>
+<body>
 
 
     <section class="section" id="head" style="display: block;">
@@ -77,10 +73,17 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </section>
 
     </body>
+{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('css/United.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/W3C.css') }}" rel="stylesheet">
 
 {% endblock %}
+

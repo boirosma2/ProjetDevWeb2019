@@ -28,6 +28,7 @@ class ProjetController extends Controller
      */
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $projets = $em->getRepository('AppBundle:Projet')->findAll();
@@ -45,6 +46,12 @@ class ProjetController extends Controller
      */
     public function newAction(Request $request, User $user)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité : vous n avez pas le droit le droit de creer un projet.');
+        }
         $user = $this->get('security.token_storage')->getToken()->getUser();
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
             // Sinon on déclenche une exception « Accès interdit »
@@ -113,6 +120,12 @@ class ProjetController extends Controller
      */
     public function editAction(Request $request, Projet $projet)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité: vous ne pouvez pas modifier ce projet ');
+        }
         $deleteForm = $this->createDeleteForm($projet);
         $editForm = $this->createFormBuilder($projet)
             ->add('nom', TextType::class)
@@ -128,7 +141,7 @@ class ProjetController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('projet_edit', array('id' => $projet->getId()));
+            return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
 
         return $this->render('projet/edit.html.twig', array(
@@ -146,6 +159,12 @@ class ProjetController extends Controller
      */
     public function deleteAction(Request $request, Projet $projet)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_CHEF')) {
+            // Sinon on déclenche une exception « Accès interdit »
+
+            throw new AccessDeniedException('Accès limité: vous ne pouvez modifier que les projets que vous avez creer.');
+        }
         $form = $this->createDeleteForm($projet);
         $form->handleRequest($request);
 

@@ -52,7 +52,7 @@
                         <li>
                             <a href="{{ path('user_show', { 'id': user.id }) }}">{{ 'label.show'|trans }}</a>
                         </li>
-                        {% if is_granted('ROLE_CHEF') %}
+                        {% if is_granted('ROLE_ADMIN') %}
                         <li>
                             <a href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'label.edit'|trans }}</a>
                         </li>
@@ -65,8 +65,10 @@
     </table>
 
     <ul>
+        {% if is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{ path('user_new') }}">{{ 'label.CreateUser'|trans }}</a>
         </li>
+        {% endif %}
     </ul>
 {% endblock %}

@@ -16,11 +16,10 @@ class TacheType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('dateDebut')
+            ->add('dateDeb')
             ->add('dateFinPrevue')
-            ->add('dateFinReelle')
-            ->add('avancement')
-            ->add('projet');
+            ->add('dateFinReel')
+            ->add('avancement');
     }/**
      * {@inheritdoc}
      */

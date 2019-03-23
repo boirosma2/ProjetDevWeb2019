@@ -147,6 +147,7 @@ class Projet
         $this->taches[] = $tache;
     }
 
+
     public function getUser()
     {
         return $this->user;

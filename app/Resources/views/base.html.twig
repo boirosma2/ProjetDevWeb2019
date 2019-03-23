@@ -6,7 +6,24 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     </head>
     <body class="text-shadows" style="background:url('https://goo.gl/xYe8p9') no-repeat;>
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    </body>
+    </html>
+    =======
+    <head>
+    <meta charset="UTF-8" />
+        <title>{% block title %}shahroze nawaz!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <div class="container">
+            {% block content %}{% endblock %}
+            {% block body %}{% endblock %}
+        </div>
+        <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
