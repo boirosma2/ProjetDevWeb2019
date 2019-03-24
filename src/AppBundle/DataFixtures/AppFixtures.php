@@ -32,6 +32,7 @@ class AppFixtures extends Fixture
             $user->setPlainPassword('password');
             $user->setSalt('');
             $user->addCompetences('Java');
+
             $manager->persist($user);
             $manager->flush();
             $users[] = $user;
@@ -56,9 +57,7 @@ class AppFixtures extends Fixture
                 $projet = new Projet();
                 $projet->setNom('Projet ' . $i . $j);
                 $ch = <<<'MARKDOWN'
-Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor
-incididunt ut labore et **dolore magna aliqua**: Duis aute irure dolor in
-reprehenderit in voluptate 
+ici se trouve toutes les informations sur le projet en cours
 
 MARKDOWN;
                 $projet->setDescription($ch);

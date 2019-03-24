@@ -165,6 +165,7 @@ class ProjetController extends Controller
 
             throw new AccessDeniedException('Accès limité: vous ne pouvez modifier que les projets que vous avez creer.');
         }
+
         $form = $this->createDeleteForm($projet);
         $form->handleRequest($request);
 
