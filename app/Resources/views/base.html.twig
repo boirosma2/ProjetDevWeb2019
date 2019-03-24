@@ -45,7 +45,9 @@
                         {% else %}
                             <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         {% endif %}
-                        <li><a href="{{ path('user_show', { 'id': app.user.id }) }}"><span class="pe-7s-user"></span> Account</a></li>
+                        {% if app.user %}
+                            <li><a href="{{ path('user_show', { 'id': app.user.id }) }}"><span class="pe-7s-user"></span> Account</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
