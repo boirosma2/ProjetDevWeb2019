@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="col-sm-6" xmlns="http://www.w3.org/1999/html">
     <h1>{{ 'label.ProjectEdit'|trans }}</h1>
-
+    <div class="form-group col-sm-10 form-control">
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('projet_index') }}">{{ 'label.BackToList'|trans }}</a>
-        </li>
-        {% if ((is_granted('ROLE_CHEF') and (app.user.id == projet.user.id)) or is_granted('ROLE_ADMIN')) %}
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-        {% endif %}
-    </ul>
+        <input class="btn btn-primary" type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+    {% if ((is_granted('ROLE_CHEF') and (app.user.id == projet.user.id)) or is_granted('ROLE_ADMIN')) %}
+
+        {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+
+    {% endif %}
+    </br><a href="{{ path('projet_index') }}">{{ 'label.BackToList'|trans }}</a>
+    </div>
+</div>
+
 {% endblock %}

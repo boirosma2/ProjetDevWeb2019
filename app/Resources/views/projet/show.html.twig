@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="col-sm-6">
     <h1>{{ 'label.ShowProject'|trans }}</h1>
 
     <table>
@@ -44,29 +45,29 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('projet_index') }}">{{ 'label.BackToList'|trans }}</a>
-        </li>
+
+        <br><a role="button" class="btn btn-primary"
+           href="{{ path('tache_showAllFromProjet', { 'id': projet.id }) }}">{{ 'label.ShowTaskProject'|trans }}</a><br>
+
         {% if ((is_granted('ROLE_CHEF') and app.user.id == projet.user.id) or is_granted('ROLE_ADMIN')) %}
-        <li>
-            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">{{ 'label.Edit'|trans }}</a>
-        </li>
+
+            <a role="button" class="btn btn-primary"
+               href="{{ path('projet_edit', { 'id': projet.id }) }}">{{ 'label.Edit'|trans }}</a><br>
+
         {% endif %}
-        {% if ((is_granted('ROLE_CHEF')  or is_granted('ROLE_ADMIN')) %}
-        <li>
-            <a href="{{ path('tache_new', { 'id': projet.id }) }}">{{ 'label.AddTask'|trans }}</a>
-        </li>
+
+        {% if (is_granted('ROLE_CHEF')  or is_granted('ROLE_ADMIN')) %}
+
+            <a role="button" class="btn btn-success"
+               href="{{ path('tache_new', { 'id': projet.id }) }}">{{ 'label.AddTask'|trans }}</a>
+
         {% endif %}
-        <li>
-            <a href="{{ path('tache_showAllFromProjet', { 'id': projet.id }) }}">{{ 'label.ShowTaskProject'|trans }}</a>
-        </li>
-        <li>
-            {% if ((is_granted('ROLE_CHEF') and app.user.id == projet.user.id) or is_granted('ROLE_ADMIN')) %}
+
+        {% if ((is_granted('ROLE_CHEF') and app.user.id == projet.user.id) or is_granted('ROLE_ADMIN')) %}
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-            {% endif %}
-        </li>
-    </ul>
+        {% endif %}
+        <a href="{{ path('projet_index') }}">{{ 'label.BackToList'|trans }}</a>
+    </div>
 {% endblock %}

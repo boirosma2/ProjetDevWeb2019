@@ -1,10 +1,18 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
 
+{% endblock %}
 {% block body %}
-    <h1>{{ 'label.ProjectList'|trans }}</h1>
-    <table>
+<div class="col-xs-12 margin" >
+    <ul class="pagination pagination-sm">
+        <li ><a href="{{ path('user_index') }}">{{ 'label.Users'|trans }}</a></li>
+        <li class="active"><a href="{{ path('projet_index') }}">{{ 'label.Projects'|trans }}</h5></a></li>
+        <li><a href="{{ path('tache_index') }}">{{ 'label.Task'|trans }}</a></li>
+
+    </ul>
+    <table  class="table table-hover table-dark container ">
         <thead>
-            <tr>
+            <tr class="bg-primary">
                 <th>{{ 'label.Id'|trans }}</th>
                 <th>{{ 'label.Name'|trans }}</th>
                 <th>{{ 'label.Description'|trans }}</th>
@@ -18,7 +26,7 @@
         </thead>
         <tbody>
         {% for projet in projets %}
-            <tr>
+            <tr class ="bg-success">
                 <td><a href="{{ path('projet_show', { 'id': projet.id }) }}">{{ projet.id }}</a></td>
                 <td>{{ projet.nom }}</td>
                 <td>{{ projet.description }}</td>
@@ -32,20 +40,21 @@
                     {% endfor %}
                 </td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('projet_show', { 'id': projet.id }) }}">{{ 'label.Show'|trans }}</a>
-                        </li>
+
+                            <a role="button" class="btn btn-xs btn-primary"
+                               href="{{ path('projet_show', { 'id': projet.id }) }}">{{ 'label.Show'|trans }}</a>
+
                         {% if (is_granted('ROLE_CHEF') and app.user.id == projet.user.id) or is_granted('ROLE_ADMIN') %}
-                        <li>
-                            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">{{ 'label.Edit'|trans }}</a>
-                        </li>
+
+                            <a role="button" class="btn btn-xs btn-success"
+                               href="{{ path('projet_edit', { 'id': projet.id }) }}">{{ 'label.Edit'|trans }}</a>
+
                         {% endif %}
-                    </ul>
+
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}

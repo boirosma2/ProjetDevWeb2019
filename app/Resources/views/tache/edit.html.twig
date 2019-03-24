@@ -1,27 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="col-sm-6">
     <h1>{{ 'label.TaskEdit'|trans }}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input class="btn btn-primary" type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('tache_index') }}">{{ 'label.BackToList'|trans }}</a>
-        </li>
         {% if (is_granted('ROLE_DEV') and (app.user.id == tache.user.id))
             or app.user.id == tache.projet.user.id or is_granted('ROLE_ADMIN') %}
-        <li>
-            <a href="{{ path('tache_terminer', { 'id': tache.id }) }}">{{ 'label.EndTask'|trans }}</a>
-        </li>
+
+            <a class="btn btn-success" href="{{ path('tache_terminer', { 'id': tache.id }) }}">{{ 'label.EndTask'|trans }}</a>
+
         {% endif %}
-        <li>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    <a href="{{ path('tache_index') }}">{{ 'label.BackToList'|trans }}</a>
+</div>
 {% endblock %}

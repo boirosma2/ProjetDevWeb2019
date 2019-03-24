@@ -1,78 +1,92 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ 'label.ListUser'|trans }}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>{{ 'label.Id'|trans }}</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'label.Name'|trans }}</th>
-                <td>{{ user.nom }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'label.Surname'|trans }}</th>
-                <td>{{ user.prenom }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'label.Fonction'|trans }}</th>
-                <td>
-                    {% for role in user.roles %}
-                        {% if role == 'ROLE_DEV' %}
-                            {{ 'label.Developer'|trans }} <br>
-                        {% endif %}
-                        {% if role == 'ROLE_CHEF' %}
-                            {{  'label.ProjectManager'|trans }}  <br>
-                        {% endif %}
-                    {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <th>{{ 'label.Skill'|trans }}</th>
-                <td>{{ user.competences[0] }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'label.Task'|trans }}</th>
-                <td>
-                    {% for tache in user.taches %}
-                        {{ tache.nom }}<br>
-                    {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <th>{{ 'label.Project'|trans }}</th>
-                <td>
-                    {% for projet in user.projets %}
-                        {{ projet.nom }}<br>
-                    {% endfor %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col-xs-6 margin">
+        <h2>{{ 'label.ListUser'|trans }}</h2>
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="{{ asset('img/profile.png') }}" alt="Card image" style="width:50%">
+            <div class="card-body" >
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>{{ 'label.Id'|trans }}</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.Name'|trans }}</th>
+                        <td>{{ user.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.Surname'|trans }}</th>
+                        <td>{{ user.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.Fonction'|trans }}</th>
+                        <td>
+                            {% for role in user.roles %}
+                                {% if role == 'ROLE_DEV' %}
+                                    {{ 'label.Developer'|trans }} <br>
+                                {% endif %}
+                                {% if role == 'ROLE_CHEF' %}
+                                    {{  'label.ProjectManager'|trans }}  <br>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.Skill'|trans }}</th>
+                        {% for competence in user.competences %}
+                        <td>{{ competence }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.Task'|trans }}</th>
+                        <td>
+                            {% for tache in user.taches %}
+                                {{ tache.nom }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.Project'|trans }}</th>
+                        <td>
+                            {% for projet in user.projets %}
+                                {{ projet.nom }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
-        </li>
-        {% if is_granted('ROLE_ADMIN') or app.user.id == user.id %}
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'label.Edit'|trans }}</a>
-        </li>
-        {% endif %}
-        <ul>
-            {% if is_granted('ROLE_CHEF') %}
-            <li>
-                <a href="{{ path('projet_new', { 'id': user.id }) }}">{{ 'label.CreateProject'|trans }}</a>
-            </li>
-            {% endif %}
-        </ul>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                {% if is_granted('ROLE_CHEF') %}
+                    <a href="{{ path('projet_new', { 'id': user.id }) }}"
+                       role="button" class="btn btn-success">{{ 'label.CreateProject'|trans }}</a><br>
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') and app.user.id != user.id %}
+
+                    <a href="{{ path('user_edit', { 'id': user.id }) }}"
+                       role="button" class="btn btn-primary">{{ 'label.Edit'|trans }}</a>
+                {% elseif app.user.id == user.id %}
+                    <a href="{{ path('fos_user_profile_edit') }}"
+                       role="button" class="btn btn-primary">{{ 'label.Edit'|trans }}</a>
+                    <a href="{{ path('fos_user_change_password') }}"
+                       role="button" class="btn btn-primary">{{ 'label.ChangePassword'|trans }}</a>
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                {% endif %}
+
+                <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
+
+            </div>
+        </div>
+        <br>
+    </div>
+
 {% endblock %}

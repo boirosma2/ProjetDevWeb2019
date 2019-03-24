@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
 
+{% endblock %}
 {% block body %}
-    <h1>{{ 'label.TaskList'|trans }}</h1>
+<div class="col-xs-12 margin" >
+    <ul class="pagination pagination-sm">
+        <li ><a href="{{ path('user_index') }}">{{ 'label.Users'|trans }}</a></li>
+        <li ><a href="{{ path('projet_index') }}">{{ 'label.Projects'|trans }}</a></li>
+        <li class="active"><a href="{{ path('tache_index') }}">{{ 'label.Task'|trans }}</a></li>
 
-    <table>
+    </ul>
+
+    <table class="table table-hover table-dark container ">
         <thead>
-            <tr>
+            <tr class="bg-primary">
                 <th>{{ 'label.Id'|trans }}</th>
                 <th>{{ 'label.Name'|trans }}</th>
                 <th>{{ 'label.Description'|trans }}</th>
@@ -19,7 +27,7 @@
         </thead>
         <tbody>
         {% for tache in taches %}
-            <tr>
+            <tr class ="bg-success">
                 <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.id }}</a></td>
                 <td>{{ tache.nom }}</td>
                 <td>{{ tache.description }}</td>
@@ -29,23 +37,26 @@
                 <td>{{ tache.avancement }}</td>
                 <td>{{ tache.projet.nom }}</td>
                 <td>
-                    <ul>
+
                         {% if is_granted('ROLE_DEV')%}
-                        <li>
-                            <a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ 'label.Show'|trans }}</a>
-                        </li>
+
+                            <a role="button" class="btn btn-xs btn-primary"
+                               href="{{ path('tache_show', { 'id': tache.id }) }}">{{ 'label.Show'|trans }}</a>
+
                         {% endif %}
                         {% if (is_granted('ROLE_DEV') and (app.user.id == tache.user.id))
                             or app.user.id == tache.projet.user.id or is_granted('ROLE_ADMIN') %}
-                        <li>
-                            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">{{ 'label.Edit'|trans }}</a>
-                        </li>
+
+                            <a role="button" class="btn btn-xs btn-success"
+                                href="{{ path('tache_edit', { 'id': tache.id }) }}">{{ 'label.Edit'|trans }}</a>
+
                         {% endif %}
-                    </ul>
+
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+</div>
 
 {% endblock %}

@@ -1,74 +1,84 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+{% endblock %}
 {% block body %}
-    <h1>{{ 'label.UserList'|trans }}</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>{{ 'label.Id'|trans }}</th>
-                <th>{{ 'label.Name'|trans }}</th>
-                <th>{{ 'label.Surname'|trans }}</th>
-                <th>{{ 'label.Fonction'|trans }}</th>
-                <th>{{ 'label.Skill'|trans }}</th>
-                <th>{{ 'label.Task'|trans }}</th>
-                <th>{{ 'label.Project'|trans }}</th>
-                <th>{{ 'label.Action'|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>
-                {% for role in user.roles %}
-                   {% if role == 'ROLE_DEV' %}
-                       {{ 'label.Developer'|trans }} <br>
-                   {% endif %}
-                    {% if role == 'ROLE_CHEF' %}
-                        {{ 'label.ProjectManager'|trans }} <br>
-                    {% endif %}
-                {% endfor %}
-                </td>
-                <td>
-                    {% for competence in user.competences %}
-                        {{ competence }}<br>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for tache in user.taches %}
-                        {{ tache.nom }}<br>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for projet in user.projets %}
-                        {{ projet.nom }}<br>
-                    {% endfor %}
-                </td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">{{ 'label.show'|trans }}</a>
-                        </li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'label.edit'|trans }}</a>
-                        </li>
+    <div class="col-xs-12 margin" >
+        <ul class="pagination justify-content-center pagination-sm">
+            <li class="active"><a href="{{ path('user_index') }}">{{ 'label.Users'|trans }}</a></li>
+            <li ><a href="{{ path('projet_index') }}">{{ 'label.Projects'|trans }}</a></li>
+            <li><a href="{{ path('tache_index') }}">{{ 'label.Task'|trans }}</a></li>
+        </ul>
+        <table class="table table-hover table-dark container ">
+            <thead>
+                <tr class="bg-primary">
+                    <th>{{ 'label.Id'|trans }}</th>
+                    <th>{{ 'label.Name'|trans }}</th>
+                    <th>{{ 'label.Surname'|trans }}</th>
+                    <th>{{ 'label.Fonction'|trans }}</th>
+                    <th>{{ 'label.Skill'|trans }}</th>
+                    <th>{{ 'label.Task'|trans }}</th>
+                    <th>{{ 'label.Project'|trans }}</th>
+                    <th>{{ 'label.Action'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr class ="bg-success" >
+                    <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>
+                    {% for role in user.roles %}
+                       {% if role == 'ROLE_DEV' %}
+                           {{ 'label.Developer'|trans }} <br>
+                       {% endif %}
+                        {% if role == 'ROLE_CHEF' %}
+                            {{ 'label.ProjectManager'|trans }} <br>
                         {% endif %}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    {% endfor %}
+                    </td>
+                    <td>
+                        {% for competence in user.competences %}
+                            {{ competence }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for tache in user.taches %}
+                            {{ tache.nom }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for projet in user.projets %}
+                            {{ projet.nom }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>
 
-    <ul>
+                                <a role="button" class="btn btn-xs btn-primary"
+                                   href="{{ path('user_show', { 'id': user.id }) }}">{{ 'label.show'|trans }}</a><br>
+
+                            {% if is_granted('ROLE_ADMIN') %}
+
+                                <a role="button" class="btn btn-xs btn-success"
+                                   href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'label.edit'|trans }}</a>
+
+                            {% endif %}
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
         {% if is_granted('ROLE_ADMIN') %}
-        <li>
-            <a href="{{ path('user_new') }}">{{ 'label.CreateUser'|trans }}</a>
-        </li>
+            <div style="text-align: center;">
+                <a href="{{ path('user_new') }}"
+               role="button" class="btn btn-success"
+               style="text-align: center;">+</a>
+            </div>
+
         {% endif %}
-    </ul>
+    </div>
 {% endblock %}

@@ -1,28 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="col-xs-12 margin">
     <h1>{{ 'label.UserEdit'|trans }}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input class="btn btn-success" type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
-        </li>
-        <ul>
-            {% if is_granted('ROLE_CHEF') %}
-            <li>
-                <a href="{{ path('projet_new', { 'id': user.id }) }}">{{ 'label.CreateProject'|trans }}</a>
-            </li>
-            {% endif %}
-        </ul>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {% if is_granted('ROLE_CHEF') %}
+        <a href="{{ path('projet_new', { 'id': user.id }) }}" style=""
+           class="btn btn-primary">{{ 'label.CreateProject'|trans }}</a>
+    {% endif %}
+
+    {{ form_start(delete_form) }}
+        <input  class="btn btn-danger" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+    <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
+</div>
 {% endblock %}

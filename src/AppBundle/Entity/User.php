@@ -143,6 +143,21 @@ class User extends BaseUser
     }
 
     /**
+     * Set competences
+     *
+     * @param \stdClass $competences
+     *
+     * @return User
+     */
+    public function SetCompetences(array $competence)
+    {
+        $this->competences[] = $competence;
+
+        return $this;
+    }
+
+
+    /**
      * Get competences
      *
      * @return \stdClass

@@ -1,89 +1,108 @@
-<head>
-    <meta charset="utf-8">
-    <title>Mini Projet</title>
+{% extends "@FOSUser/layout.html.twig" %}
+    {% block stylesheets %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font: 20px Montserrat, sans-serif;
+                line-height: 1.8;
+                color: #f5f6f7;
+            }
+            p {font-size: 16px;}
+            .margin {margin-bottom: 45px;}
+            .bg-1 {
+                background-color: #1abc9c; /* Green */
+                color: #ffffff;
+            }
+            .bg-2 {
+                background-color: #474e5d; /* Dark Blue */
+                color: #ffffff;
+            }
+            .bg-3 {
+                background-color: #ffffff; /* White */
+                color: #555555;
+            }
+            .bg-4 {
+                background-color: #2f2f2f; /* Black Gray */
+                color: #fff;
+            }
+            .container-fluid {
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
+            .navbar {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                font-size: 12px;
+                letter-spacing: 5px;
+            }
+            .navbar-nav  li a:hover {
+                color: #1abc9c !important;
+            }
+        </style>
+    {% endblock stylesheets %}
 
-    <!-- Fonts -->
-</head>
-<body>
+{% block body %}
+    <div class="container-fluid bg-1 text-center">
+        <h3 class="margin">Who Are We?</h3>
+        <img src="{{ asset('img/bird.jpg') }}" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+        <h3>We are Developers</h3>
+    </div>
 
+    <!-- Second Container -->
+    <div class="container-fluid bg-2 text-center">
+        <h3 class="margin">Mini Projet Développement Web</h3>
+        <p>Bienvenue sur notre application web de gestion de tâches.<br>
+            Cet outil à pour but de vous simplifiez la vie dans vos futurs projets</p>
+    </div>
 
-    <section class="section" id="head" style="display: block;">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
-
-                    <!-- Site Title, your name, HELLO msg, etc. -->
-                    <h1 class="title">Mini Projet Développement Web</h1>
-                    <h2 class="subtitle">Application de gestion des tâches</h2>
-
-                    <!-- Short introductory (optional) -->
-                    <h3 class="tagline">
-                        Bienvenue sur notre application web de gestion de tâches.<br>
-                        Cet outil à pour but de vous simplifiez la vie dans vos futurs projets.<br><br>
-                    </h3>
-
-                    <!-- Nice place to describe your site in a sentence or two -->
-                    <p><a href="login" class="btn btn-default btn-lg btn-download">Utiliser l'outil</a></p>
-
-                </div> <!-- /col -->
-            </div> <!-- /row -->
-
-        </div>
-    </section>
-
-    <!-- Second (About) section -->
-    <section class="section" id="about">
-        <div class="container">
-
-            <h2 class="text-center title"></h2>
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-2">
-                    <h5><strong>Pourquoi utiliser notre application ?<br></strong></h5>
-                    <p>Cette application a été développer par des professionnels de la gestion afin de répondre au mieux
+    <!-- Third Container (Grid) -->
+    <div class="container-fluid bg-3 text-center">
+        <h3 class="margin">Pourquoi utiliser notre application ?</h3><br>
+        <div class="row">
+            <div class="col-sm-4">
+                <p>Cette application a été développer par des professionnels de la gestion afin de répondre au mieux
                     aux besoins des chefs de projets. <br>Grâce à cette application, vous pourrez gérer l'ensemble de
                     vos projets, mais également attribuer l'ensemble des tâches que vous aurez définis auparavant à
                     l'ensemble des développeur.<br>Aussi, notre application vous propose un suivi en temps réel, vous permettant
                     donc de suivre l'ensemble de vos projets.</p>
-                </div>
-                <div class="col-sm-4">
-                    <h5><strong>Combien coûte une licence pour ce logiciel ?<br></strong></h5>
-                    <p>La licence de ce logiciel est gratuite, et ce à vie !<br>Nous avons pensé qu'il était essentiel que
+
+            </div>
+
+            <div class="col-sm-4">
+
+                <p>La licence de ce logiciel est gratuite, et ce à vie !<br>Nous avons pensé qu'il était essentiel que
                     l'ensemble des professionnels (et plus particulièrement les chefs de projets) ait accès de manière
                     gratuite à l'ensemble des fonctionnalités que propose notre application de gestion des tâches. <br>
                     Nous vous rappellons que ce logiciel possède un grand nombre de fonctionnalités. Alors qu'attendez vous
                     pour vous lancer ?</p>
-                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+
             </div>
         </div>
-    </section>
-
-    <!-- Fourth (Contact) section -->
-    <section class="section" id="contact">
-        <div class="container">
-
-            <h2 class="text-center title">Nous contacter</h2>
-
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text-center">
-                    <p class="lead">Vous avez une question sur ce modèle ou vous souhaitez suggérer une nouvelle fonctionnalité ?
-                        <br>N'hésitez pas à nous envoyer un email ou à me laisser une ligne sur Twitter!</p>
-                    <p><b>boiro_tassi_chauveau@contact.com</b><br></p>
-                    <a href="https://github.com/boirosma2/ProjetDevWeb2019" class="btn btn-link"> Github<br><br></a>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    </body>
+    </div>
 {% endblock %}
 
-{% block stylesheets %}
+{% block footer %}
+    <footer class="container-fluid bg-4 text-center ">
+        <p class="lead">Vous avez une question sur ce modèle ou vous souhaitez suggérer une nouvelle fonctionnalité ?
+            <br>N'hésitez pas à nous envoyer un email ou à me laisser une ligne sur Twitter!</p>
+        <p><b>boiro_tassi_chauveau@contact.com</b><br></p>
+        <a href="https://github.com/boirosma2/ProjetDevWeb2019" class="btn btn-link"> Github<br><br></a></li>
 
-    <link href="{{ asset('css/United.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/index.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/W3C.css') }}" rel="stylesheet">
-
+    </footer>
 {% endblock %}
-
