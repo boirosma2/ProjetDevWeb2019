@@ -68,12 +68,12 @@
                 {% if is_granted('ROLE_ADMIN') and app.user.id != user.id %}
 
                     <a href="{{ path('user_edit', { 'id': user.id }) }}"
-                       role="button" class="btn btn-primary">{{ 'label.Edit'|trans }}</a>
+                       role="button" class="btn btn-primary">{{ 'label.Edit'|trans }}</a><br>
                 {% elseif app.user.id == user.id %}
                     <a href="{{ path('fos_user_profile_edit') }}"
-                       role="button" class="btn btn-primary">{{ 'label.Edit'|trans }}</a>
+                       role="button" class="btn btn-primary">{{ 'label.Edit'|trans }}</a><br>
                     <a href="{{ path('fos_user_change_password') }}"
-                       role="button" class="btn btn-primary">{{ 'label.ChangePassword'|trans }}</a>
+                       role="button" class="btn btn-primary">{{ 'label.ChangePassword'|trans }}</a><br>
                 {% endif %}
 
                 {% if is_granted('ROLE_ADMIN') %}
