@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="col-sm-6">
     <h1>{{ 'label.UserCreate'|trans }}</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input class="btn btn-success" type="submit" value={{ 'label.CreateUser'|trans }} />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
+
             <a href="{{ path('user_index') }}">{{ 'label.BackToList'|trans }}</a>
-        </li>
-    </ul>
+</div>
 {% endblock %}

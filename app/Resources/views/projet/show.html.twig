@@ -4,7 +4,7 @@
     <div class="col-sm-6">
     <h1>{{ 'label.ShowProject'|trans }}</h1>
 
-    <table>
+    <table >
         <tbody>
             <tr>
                 <th>{{ 'label.Id'|trans }}</th>
@@ -37,13 +37,27 @@
             <tr>
                 <th>{{ 'label.Task'|trans }}</th>
                 <td>
+                    {% set v = 100 %}
+                    {% if projet.taches is empty %}
+                        {% set v = 0 %}
+                    {% endif %}
                     {% for tache in projet.taches %}
                         {{ tache.nom }}<br>
+                        {% if tache.avancement < v %}
+                            {% set v = tache.avancement %}
+                        {% endif %}
                     {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>{{ 'label.Advancement'|trans }}</th>
+                <td>
+                    <progress id="file" max="100" value="{{ v }}"> {{ v }} </progress>
                 </td>
             </tr>
         </tbody>
     </table>
+
 
 
         <br><a role="button" class="btn btn-primary"

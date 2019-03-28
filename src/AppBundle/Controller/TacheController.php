@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * Tache controller.
  *
- * @Route("tache")
+ * @Route("{_locale}/tache")
  */
 class TacheController extends Controller
 {
@@ -28,6 +28,7 @@ class TacheController extends Controller
      */
     public function indexAction()
     {
+        $msg='';
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_DEV')) {
             // Sinon on déclenche une exception « Accès interdit »
 
@@ -39,6 +40,7 @@ class TacheController extends Controller
 
         return $this->render('tache/index.html.twig', array(
             'taches' => $taches,
+            'msg' => $msg
         ));
     }
 
@@ -57,6 +59,7 @@ class TacheController extends Controller
         }
         $tache = new Tache();
         $tache->setProjet($projet);
+        $tache->setUser($projet->getUser());
         $form = $this->createFormBuilder($tache)
             ->add('nom', TextType::class)
             ->add('description', TextType::class)
@@ -110,6 +113,7 @@ class TacheController extends Controller
      */
     public function showAllFromProjectAction(Projet $projet)
     {
+        $msg = '';
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_DEV')) {
             // Sinon on déclenche une exception « Accès interdit »
 
@@ -120,14 +124,15 @@ class TacheController extends Controller
             ->findBy(['projet' => $projet,]);
 
         if(!$em){
-            throw $this->createNotFoundException(
-                'No Task found for project '.$projet->getNom()
-            );
+
+              $msg = 'No Task found for project '.$projet->getNom();
+
         }
 
 
         return $this->render('tache/index.html.twig', array(
             'taches' => $em,
+            'msg' => $msg,
         ));
     }
 

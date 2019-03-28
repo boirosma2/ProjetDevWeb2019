@@ -2,10 +2,6 @@
     {% block stylesheets %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <style>
             body {
                 font: 20px Montserrat, sans-serif;
@@ -30,7 +26,7 @@
                 background-color: #2f2f2f; /* Black Gray */
                 color: #fff;
             }
-            .container-fluid {
+            .container-fluide {
                 padding-top: 70px;
                 padding-bottom: 70px;
             }
@@ -50,21 +46,21 @@
     {% endblock stylesheets %}
 
 {% block body %}
-    <div class="container-fluid bg-1 text-center">
+    <div class="container-fluide bg-1 text-center">
         <h3 class="margin">Who Are We?</h3>
         <img src="{{ asset('img/bird.jpg') }}" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
         <h3>We are Developers</h3>
     </div>
 
     <!-- Second Container -->
-    <div class="container-fluid bg-2 text-center">
+    <div class="container-fluide bg-2 text-center">
         <h3 class="margin">Mini Projet Développement Web</h3>
         <p>Bienvenue sur notre application web de gestion de tâches.<br>
             Cet outil à pour but de vous simplifiez la vie dans vos futurs projets</p>
     </div>
 
     <!-- Third Container (Grid) -->
-    <div class="container-fluid bg-3 text-center">
+    <div class="container-fluide bg-3 text-center">
         <h3 class="margin">Pourquoi utiliser notre application ?</h3><br>
         <div class="row">
             <div class="col-sm-4">
@@ -95,7 +91,7 @@
 {% endblock %}
 
 {% block footer %}
-    <footer class="container-fluid bg-4 text-center ">
+    <footer class="container-fluide bg-4 text-center ">
         <p class="lead">Vous avez des questions sur notre logiciel?
             <br>merci de nous envoyer un formulaire de contact à l'adresse qui s'affiche en dessous</p>
         <p><b>boiro_tassi_chauveau@contact.com</b><br></p>

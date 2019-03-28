@@ -11,6 +11,7 @@
             <li ><a href="{{ path('projet_index') }}">{{ 'label.Projects'|trans }}</a></li>
             <li><a href="{{ path('tache_index') }}">{{ 'label.Task'|trans }}</a></li>
         </ul>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
         <table class="table table-hover table-dark container ">
             <thead>
                 <tr class="bg-primary">
@@ -18,13 +19,12 @@
                     <th>{{ 'label.Name'|trans }}</th>
                     <th>{{ 'label.Surname'|trans }}</th>
                     <th>{{ 'label.Fonction'|trans }}</th>
-                    <th>{{ 'label.Skill'|trans }}</th>
                     <th>{{ 'label.Task'|trans }}</th>
                     <th>{{ 'label.Project'|trans }}</th>
                     <th>{{ 'label.Action'|trans }}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="myTable">
             {% for user in users %}
                 <tr class ="bg-success" >
                     <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
@@ -39,11 +39,6 @@
                             {{ 'label.ProjectManager'|trans }} <br>
                         {% endif %}
                     {% endfor %}
-                    </td>
-                    <td>
-                        {% for competence in user.competences %}
-                            {{ competence }}<br>
-                        {% endfor %}
                     </td>
                     <td>
                         {% for tache in user.taches %}
@@ -81,4 +76,17 @@
 
         {% endif %}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 {% endblock %}

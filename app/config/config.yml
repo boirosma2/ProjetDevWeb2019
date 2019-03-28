@@ -11,6 +11,7 @@ parameters:
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
+    default_locale: %locale%
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -77,9 +78,10 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: francois.chauveau44@gmail.com
+        address: boiro.yero.sma2@gmail.com
         sender_name: lebossdu44210
     registration:
         form:
             type: AppBundle\Form\RegistrationType
+
 

@@ -9,6 +9,8 @@
         <input class="btn btn-success" type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
+
+
     {% if is_granted('ROLE_CHEF') %}
         <a href="{{ path('projet_new', { 'id': user.id }) }}" style=""
            class="btn btn-primary">{{ 'label.CreateProject'|trans }}</a>

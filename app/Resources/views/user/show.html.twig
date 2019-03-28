@@ -7,11 +7,15 @@
         <div class="card" style="width:400px">
             <img class="card-img-top" src="{{ asset('img/profile.png') }}" alt="Card image" style="width:50%">
             <div class="card-body" >
-                <table>
+                <table >
                     <tbody>
                     <tr>
                         <th>{{ 'label.Id'|trans }}</th>
                         <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'label.username'|trans }}</th>
+                        <td>{{ user.username }}</td>
                     </tr>
                     <tr>
                         <th>{{ 'label.Name'|trans }}</th>
@@ -34,12 +38,7 @@
                             {% endfor %}
                         </td>
                     </tr>
-                    <tr>
-                        <th>{{ 'label.Skill'|trans }}</th>
-                        {% for competence in user.competences %}
-                        <td>{{ competence }}</td>
-                        {% endfor %}
-                    </tr>
+
                     <tr>
                         <th>{{ 'label.Task'|trans }}</th>
                         <td>
@@ -60,7 +59,7 @@
                 </table>
             </div>
 
-                {% if is_granted('ROLE_CHEF') %}
+                {% if is_granted('ROLE_CHEF')  and not(is_granted('ROLE_ADMIN') and app.user.id == user.id) %}
                     <a href="{{ path('projet_new', { 'id': user.id }) }}"
                        role="button" class="btn btn-success">{{ 'label.CreateProject'|trans }}</a><br>
                 {% endif %}

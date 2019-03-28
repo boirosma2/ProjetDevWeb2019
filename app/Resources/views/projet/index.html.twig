@@ -10,6 +10,9 @@
         <li><a href="{{ path('tache_index') }}">{{ 'label.Task'|trans }}</a></li>
 
     </ul>
+
+    <input class="form-control" id="myInput" type="text" placeholder={{ 'label.Search'|trans }}>
+
     <table  class="table table-hover table-dark container ">
         <thead>
             <tr class="bg-primary">
@@ -24,7 +27,7 @@
                 <th>{{ 'label.Action'|trans }}</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
         {% for projet in projets %}
             <tr class ="bg-success">
                 <td><a href="{{ path('projet_show', { 'id': projet.id }) }}">{{ projet.id }}</a></td>
@@ -57,4 +60,17 @@
         </tbody>
     </table>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 {% endblock %}

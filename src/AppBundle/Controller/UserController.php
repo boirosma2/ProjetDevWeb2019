@@ -19,7 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * User controller.
  *
- * @Route("user")
+ * @Route("{_locale}/user")
  */
 class UserController extends Controller
 {
@@ -64,6 +64,7 @@ class UserController extends Controller
             throw new AccessDeniedException('Accès limité aux Admin.');
         }
         $user = new User();
+        $user->setEnabled(1);
         $form = $this->createForm('AppBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
@@ -105,31 +106,14 @@ class UserController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             // Sinon on déclenche une exception « Accès interdit »
 
             throw new AccessDeniedException('Accès limité aux Admin.');
         }
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createFormBuilder($user)
-            ->add('email', EmailType::class)
-            ->add('username', TextType::class)
-            ->add('plainpassword', PasswordType::class)
-            ->add('prenom', TextType::class)
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('competences', ChoiceType::class, array(
-                'choices' => array(
-                    'Java' => 'Java',
-                    'PHP' => 'PHP'
-                ),
-                'expanded'=> true,
-                'multiple' => true,
-                'required' => true
-            ))
-            ->getForm();
-        $user->setSalt('');
+        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $user->setEnabled(1);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

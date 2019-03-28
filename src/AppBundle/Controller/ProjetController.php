@@ -16,14 +16,14 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * Projet controller.
  *
- * @Route("projet")
+ * @Route("{_locale}/projet")
  */
 class ProjetController extends Controller
 {
     /**
      * Lists all projet entities.
      *
-     * @Route("/", name="projet_index")
+     * @Route("/_locale/", name="projet_index")
      * @Method("GET")
      */
     public function indexAction()

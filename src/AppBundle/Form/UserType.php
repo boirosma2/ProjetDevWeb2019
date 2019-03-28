@@ -26,7 +26,6 @@ class UserType extends AbstractType
             ->add('plainpassword', PasswordType::class)
             ->add('prenom', TextType::class)
             ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
             ->add('roles', ChoiceType::class, array(
                 'choices' => array(
                     'CHEF' => 'ROLE_CHEF',
